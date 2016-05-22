@@ -301,7 +301,14 @@ namespace JMMServer.Repositories
 
 		public List<VideoLocal> GetAll()
 		{
-		    return Cache.Values.ToList();
+            if (Cache != null)
+            {
+                return Cache.Values.ToList();
+            }
+            else
+            {
+                return new List<VideoLocal>();
+            }
 		}
 		
 
