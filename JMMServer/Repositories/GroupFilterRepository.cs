@@ -102,7 +102,14 @@ namespace JMMServer.Repositories
 
 		public List<GroupFilter> GetLockedGroupFilters(ISession session)
 		{
-		    return Cache.Values.Where(a => a.Locked == 1).ToList();
+            if (Cache != null)
+            {
+                return Cache.Values.Where(a => a.Locked == 1).ToList();
+            }
+            else
+            {
+                return new List<GroupFilter>();
+            }
 		}
 
 		public void Delete(int id)
